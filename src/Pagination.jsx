@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 const Table = ({ employees }) => {
   return (
     <table
-      //   border="1"
       cellPadding="10"
       style={{ borderCollapse: "collapse", width: "80%", margin: "auto" }}
     >
