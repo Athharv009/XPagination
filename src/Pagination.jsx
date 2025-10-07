@@ -49,11 +49,15 @@ export default function Pagination() {
   const totalPages = Math.ceil(employeeData.length / rowsPerPage);
 
   const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
   };
 
   const handlePrev = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
   };
 
   return (
@@ -72,17 +76,19 @@ export default function Pagination() {
       >
         <button
           onClick={handlePrev}
-          disabled={currentPage === 1}
           style={{
             background: "#009879",
             color: "white",
             border: "none",
             padding: "10px",
             borderRadius: "5px",
+            opacity: currentPage === 1 ? 0.6 : 1,
+            cursor: currentPage === 1 ? "not-allowed" : "pointer",
           }}
         >
           Previous
         </button>
+
         <button
           style={{
             background: "#009879",
@@ -94,6 +100,7 @@ export default function Pagination() {
         >
           {currentPage}
         </button>
+
         <button
           onClick={handleNext}
           style={{
@@ -102,8 +109,9 @@ export default function Pagination() {
             border: "none",
             padding: "10px",
             borderRadius: "5px",
+            opacity: currentPage === totalPages ? 0.6 : 1,
+            cursor: currentPage === totalPages ? "not-allowed" : "pointer",
           }}
-          disabled={currentPage === totalPages}
         >
           Next
         </button>
